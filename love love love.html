@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para my love💖</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            font-family: 'Comic Sans MS', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 320px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            animation: aparecer 1.5s;
+        }
+
+        h1 {
+            color: #ff4d6d;
+        }
+
+        p {
+            font-size: 18px;
+            color: #444;
+        }
+
+        button {
+            background: #ff4d6d;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: flotar 6s linear infinite;
+        }
+
+        @keyframes flotar {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes aparecer {
+            from {transform: scale(0);}
+            to {transform: scale(1);}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>💘 Feliz San Valentín mi querido victor💘</h1>
+        <p id="mensaje">Tengo algo especial para ti...</p>
+        <button onclick="cambiarMensaje()">Haz clic aquí 💌</button>
+    </div>
+
+    <script>
+        const mensajes = [
+            " No necesito un dia especial para que sepas que te amo pero hoy es otro dia que puedo demostrartelo una vez mas💕",
+            "Contigo todo es más bonito, cada platica, cada espera, cada mensaje, cada momento es unico✨",
+            "Eres mi esposo, el amor de mi vida, mi alma gemela, y mi compañero de vida💖",
+            "Quiero que siempres sepas que te amo 🌹",
+            "Te quiero mucho mor mor 💘"
+        ];
+
+        function cambiarMensaje() {
+            let random = Math.floor(Math.random() * mensajes.length);
+            document.getElementById("mensaje").innerText = mensajes[random];
+            crearCorazon();
+        }
+
+        function crearCorazon() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(crearCorazon, 500);
+    </script>
+
+</body>
+</html>
